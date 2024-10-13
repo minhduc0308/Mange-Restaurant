@@ -1,18 +1,20 @@
 server:
   port: 8080
   servlet:
-    context-path: /Restaurant
+    context-path: /identity
 
 spring:
   datasource:
-    url: "jdbc:sqlserver://localhost:1433;databaseName=Restaurant_2"
-    username: sa
+    url: ${DBMS_CONNECTION:jdbc:mysql://localhost:3306/Manage_lunch}
+    driverClassName: "com.mysql.cj.jdbc.Driver"
     password: 123456
-    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    username: root
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
 
 jwt:
-  signerKey: "ATDwgYF0Lqzb5jBEBUCSKmv48ovR3jlQdcM1yIMtoBE90VJqr9XzBuqQLASlWPV9"
+  signerKey: "1TjXchw5FloESb63Kc+DFhTARvpWL4jUGCwfGWxuG5SIf/1y/LgJxHnMqaF6A/ij"
+  valid-duration: 3600 # in second
+  refreshable-duration: 36000 # in seconds
